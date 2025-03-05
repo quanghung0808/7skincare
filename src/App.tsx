@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import Layout from "./components/Layout";
+import Layout from "./components/guest-layout/Layout";
 import "./global.css";
 
 const App: React.FC = () => {
