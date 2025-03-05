@@ -1,11 +1,15 @@
+import { Typography } from "@mui/material";
+import Layout from "./components/Layout";
 import "./global.css";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <h1>7Skincare</h1>
-    </>
+    <div className="container">
+      <Layout>
+        <Typography variant="body1">Welcome to 7skincare!</Typography>
+      </Layout>
+    </div>
   );
-}
+};
 
 export default App;
