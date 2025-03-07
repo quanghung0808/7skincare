@@ -3,8 +3,11 @@ import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from "@mu
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LoginIcon from "@mui/icons-material/Login";
 import { publicRoutes } from "@/routes/config/publicRoutes";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+
   return (
     <AppBar
       position="static"
@@ -42,13 +45,15 @@ const Header = () => {
           }}
         >
           {publicRoutes.map(route => {
+            const isActive = location.pathname === route.path;
             return (
               <Button
                 key={route.path}
                 color="inherit"
                 href={route.path}
                 sx={{
-                  color: "inherit",
+                  color: isActive ? "var(--primary-color)" : "inherit",
+                  fontWeight: isActive ? "bold" : "normal",
                   "&:hover": {
                     color: "var(--primary-color)",
                   },

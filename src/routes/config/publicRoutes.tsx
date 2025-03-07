@@ -1,3 +1,4 @@
+import About from "@/pages/about/About";
 import Home from "@/pages/home/Home";
 import { Route } from "@/types/common";
 
@@ -9,6 +10,7 @@ export const publicRoutes: Route[] = [
   },
   {
     path: "/gioi-thieu",
+    component: <About />,
     name: "Giới thiệu",
   },
   {

@@ -41,3 +41,27 @@ export const benefits = [
     image: "/benefit3.png",
   },
 ];
+
+export const whyJoinUs = [
+  {
+    icon: "🤝",
+    title: "HIỂU HƠN VỀ LÀN DA",
+    description: "Hiểu hơn về làn da của bạn thông qua trắc nghiệm phân tích da",
+  },
+  {
+    icon: "🩺",
+    title: "CHĂM SÓC DA CHUẨN MỰC",
+    description:
+      "Nâng niu chăm sóc làn da bạn theo quy trình chăm sóc da chuẩn được xây dựng bởi chuyên gia",
+  },
+  {
+    icon: "💡",
+    title: "NHỮNG LỜI KHUYÊN HỮU ÍCH",
+    description: "Được hướng dẫn và theo dõi bởi đội ngũ chuyên viên của chúng tôi",
+  },
+  {
+    icon: "🏥",
+    title: "CHĂM SÓC DA NÂNG CAO",
+    description: "Có thể trực tiếp thăm khám với bác sĩ tại TP.Hồ Chí Minh",
+  },
+];
