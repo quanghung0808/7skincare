@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
               sx={{
                 fontFamily: '"Pacifico", cursive',
                 fontSize: "2rem",
-                color: theme => theme.palette.primary.main,
+                color: "var(--primary-color)",
                 marginBottom: 2,
               }}
             >
@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
                   color: "inherit",
                   textDecoration: "none",
                   "&:hover": {
-                    color: "darkblue",
+                    color: "var(--primary-color)",
                   },
                 }}
               >
@@ -99,7 +99,7 @@ const Footer: React.FC = () => {
                   color: "inherit",
                   textDecoration: "none",
                   "&:hover": {
-                    color: "darkblue",
+                    color: "var(--primary-color)",
                   },
                 }}
               >
@@ -112,7 +112,7 @@ const Footer: React.FC = () => {
                   color: "inherit",
                   textDecoration: "none",
                   "&:hover": {
-                    color: "darkblue",
+                    color: "var(--primary-color)",
                   },
                 }}
               >
@@ -125,7 +125,7 @@ const Footer: React.FC = () => {
                   color: "inherit",
                   textDecoration: "none",
                   "&:hover": {
-                    color: "darkblue",
+                    color: "var(--primary-color)",
                   },
                 }}
               >
@@ -138,7 +138,7 @@ const Footer: React.FC = () => {
         <Divider sx={{ my: 2 }} />
 
         <Typography variant="body2" color="textSecondary" align="center">
-          Copyright © 2021 by 7skincare . All Rights Reserved
+          Copyright © 2025 by 7skincare . All Rights Reserved
         </Typography>
       </Container>
     </Box>

@@ -2,6 +2,7 @@ import React from "react";
 import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LoginIcon from "@mui/icons-material/Login";
+import { publicRoutes } from "@/routes/config/publicRoutes";
 
 const Header = () => {
   return (
@@ -25,7 +26,7 @@ const Header = () => {
             fontWeight: "bold",
             marginRight: "20px",
             fontFamily: '"Pacifico", cursive',
-            color: theme => theme.palette.primary.main,
+            color: "var(--primary-color)",
           }}
         >
           7skincare
@@ -40,21 +41,23 @@ const Header = () => {
             gap: "20px",
           }}
         >
-          <Button color="inherit" href="/trang-chu">
-            Trang Chủ
-          </Button>
-          <Button color="inherit" href="/gioi-thieu">
-            Giới Thiệu
-          </Button>
-          <Button color="inherit" href="/khao-sat-da">
-            Khảo sát da
-          </Button>
-          <Button color="inherit" href="/san-pham">
-            Sản Phẩm
-          </Button>
-          <Button color="inherit" href="/blog">
-            Blog
-          </Button>
+          {publicRoutes.map(route => {
+            return (
+              <Button
+                key={route.path}
+                color="inherit"
+                href={route.path}
+                sx={{
+                  color: "inherit",
+                  "&:hover": {
+                    color: "var(--primary-color)",
+                  },
+                }}
+              >
+                {route.name}
+              </Button>
+            );
+          })}
         </Box>
 
         <Box
@@ -70,7 +73,7 @@ const Header = () => {
             </Badge>
           </IconButton>
           <IconButton color="inherit" href="/login">
-            <LoginIcon sx={{ color: theme => theme.palette.primary.main }} />
+            <LoginIcon sx={{ color: "var(--primary-color)" }} />
           </IconButton>
         </Box>
       </Toolbar>

@@ -1,12 +1,10 @@
 import { Box, Container } from "@mui/material";
-import React, { ReactNode } from "react";
+import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import { Outlet } from "react-router-dom";
 
-interface LayoutProps {
-  children: ReactNode;
-}
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const GuestLayout: React.FC = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       {/* Header */}
@@ -14,7 +12,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
       {/* Main Content */}
       <Box component="main" sx={{ flexGrow: 1, paddingTop: 2, paddingBottom: 2 }}>
-        <Container maxWidth="lg">{children}</Container>
+        <Container maxWidth="lg">
+          <Outlet />
+        </Container>
       </Box>
 
       {/* Footer */}
@@ -23,4 +23,4 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   );
 };
 
-export default Layout;
+export default GuestLayout;
