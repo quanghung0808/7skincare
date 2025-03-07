@@ -1,14 +1,15 @@
-import { Typography } from "@mui/material";
-import Layout from "./components/guest-layout/Layout";
+import { BrowserRouter } from "react-router-dom";
 import "./global.css";
+import { Suspense } from "react";
+import AppRouter from "./routes/router";
 
 const App: React.FC = () => {
   return (
-    <div className="container">
-      <Layout>
-        <Typography variant="body1">Welcome to 7skincare!</Typography>
-      </Layout>
-    </div>
+    <Suspense fallback={null}>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
+    </Suspense>
   );
 };
 
