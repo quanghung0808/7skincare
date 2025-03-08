@@ -2,10 +2,12 @@ import { whyJoinUs } from "@/constants/fakeData";
 import { Box, Typography, Grid, Card, CardContent, Button } from "@mui/material";
 import { styled } from "@mui/system";
 
-const BenefitCard = styled(Card)(({ theme }) => ({
+const WhyJoinUsCard = styled(Card)(({ theme }) => ({
   textAlign: "center",
   padding: theme.spacing(2),
   margin: theme.spacing(2),
+  height: "90%",
+  width: "100%",
 }));
 
 const WhyJoinUsBanner = () => {
@@ -17,7 +19,7 @@ const WhyJoinUsBanner = () => {
       <Grid container spacing={2} justifyContent="center">
         {whyJoinUs.map((benefit, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
-            <BenefitCard>
+            <WhyJoinUsCard>
               <Typography variant="h3" component="div">
                 {benefit.icon}
               </Typography>
@@ -29,7 +31,7 @@ const WhyJoinUsBanner = () => {
                   {benefit.description}
                 </Typography>
               </CardContent>
-            </BenefitCard>
+            </WhyJoinUsCard>
           </Grid>
         ))}
       </Grid>
