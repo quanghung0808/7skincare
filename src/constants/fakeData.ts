@@ -97,3 +97,25 @@ export const products = [
     image: "path_to_image5",
   },
 ];
+
+export const blogPosts = [
+  {
+    id: 1,
+    title: 'Mostbet Turkey Resmi Sitesi Mostbet Casino 2025"',
+    date: "08 TH3",
+    category: "Uncategorized",
+    author: "Admin",
+    excerpt:
+      "Mostbet Bahisçisi: Sobre İyi Oranlar Ve Çevrimiçi Canlı Bahis DeneyimiContentQeydiyyat Və Yoxlama Most BetBahis Nasıl OynanırMostbet C...",
+  },
+  {
+    id: 2,
+    title:
+      "Basaribet Casino’ya Giriş Resmi Siteye Kayıt, Geniş Oyun Yelpazesi, Cömert Hoşgeldin Bonusu",
+    date: "08 TH3",
+    category: "Uncategorized",
+    author: "Admin",
+    excerpt:
+      "Başaribet Güncel Giriş Adresi & Yeni Giriş Adresi 2024 Başaribet Güncel Giriş AdresiContentBonuslar İçin Mevcut Promosyon KodlarıIB...",
+  },
+];

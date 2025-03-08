@@ -1,4 +1,5 @@
 import About from "@/pages/about/About";
+import Blog from "@/pages/blog/Blog";
 import Home from "@/pages/home/Home";
 import Products from "@/pages/products/Products";
 import { Route } from "@/types/common";
@@ -25,6 +26,7 @@ export const publicRoutes: Route[] = [
   },
   {
     path: "/blog",
+    component: <Blog />,
     name: "Blog",
   },
 ];
