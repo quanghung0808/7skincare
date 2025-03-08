@@ -1,5 +1,6 @@
 import About from "@/pages/about/About";
 import Home from "@/pages/home/Home";
+import Products from "@/pages/products/Products";
 import { Route } from "@/types/common";
 
 export const publicRoutes: Route[] = [
@@ -19,6 +20,7 @@ export const publicRoutes: Route[] = [
   },
   {
     path: "/san-pham",
+    component: <Products />,
     name: "Sản phẩm",
   },
   {
