@@ -4,7 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 
-const GuestLayout: React.FC = () => {
+const Layout: React.FC = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       {/* Header */}
@@ -23,4 +23,4 @@ const GuestLayout: React.FC = () => {
   );
 };
 
-export default GuestLayout;
+export default Layout;
