@@ -1,9 +1,14 @@
-import { Outlet } from "react-router-dom";
+// src/router/protectedRouter.tsx
+import useAuthStore from "@/hooks/useAuth";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+
 export default function ProtectedRouter() {
-  // const location = useLocation();
+  const location = useLocation();
+  const { isAuthenticated } = useAuthStore();
 
-  // const { isAuthenticated } = useAppSelector(state => state.auth);
+  if (!isAuthenticated) {
+    return <Navigate to="/dang-nhap" state={{ from: location }} />;
+  }
 
-  // return isAuthenticated ? <Outlet /> : <Navigate to={"/login"} state={{ from: location }} />;
   return <Outlet />;
 }
