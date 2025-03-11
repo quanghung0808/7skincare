@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider as QueryClientProviderBase } from "@ta
 
 let browserQueryClient: QueryClient | undefined = undefined;
 
-export const makeQueryClient = () => {
+const makeQueryClient = () => {
   return new QueryClient({
     defaultOptions: {
       queries: {
