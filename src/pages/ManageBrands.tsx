@@ -1,31 +1,15 @@
 import { useState } from "react";
-import {
-  Container,
-  Typography,
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Box,
-  TablePagination,
-  Chip,
-  TextField,
-} from "@mui/material";
+import { Container, Typography, Button, Box, TextField } from "@mui/material";
 import AddBrandDialog from "@/components/dialog/AddBrandDialog";
 import { getBrands } from "@/apis/brand";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSection from "@/components/section/LoadingSection";
-import { Statuses } from "@/constants/status";
+import BrandsTable from "@/components/table/BrandsTable";
 
 const ManageBrands = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const [page, setPage] = useState<number>(0);
-  const [rowsPerPage, setRowsPerPage] = useState<number>(5);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(0);
 
   const { data, isLoading } = useQuery({
     queryKey: ["get-brands"],
@@ -38,15 +22,6 @@ const ManageBrands = () => {
 
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,46 +55,7 @@ const ManageBrands = () => {
       {isLoading ? (
         <LoadingSection />
       ) : (
-        <>
-          <TableContainer component={Paper} sx={{ marginBottom: "10px" }}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>ID</TableCell>
-                  <TableCell>Tên thương hiệu </TableCell>
-                  <TableCell>Trạng thái</TableCell>
-                  <TableCell>Ngày tạo</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {filteredData
-                  ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map(brand => (
-                    <TableRow key={brand.id}>
-                      <TableCell>{brand.id}</TableCell>
-                      <TableCell>{brand.name}</TableCell>
-                      <TableCell>
-                        <Chip
-                          label={brand.status === Statuses.ACTIVATED ? "Hoạt động" : "Vô hiệu hóa"}
-                          color={brand.status === Statuses.ACTIVATED ? "success" : "error"}
-                        />
-                      </TableCell>
-                      <TableCell>{new Date(brand.createdAt).toLocaleString()}</TableCell>
-                    </TableRow>
-                  ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={filteredData?.length || 0}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </>
+        <BrandsTable brands={filteredData ?? []} page={page} setPage={setPage} />
       )}
       <AddBrandDialog handleClose={handleClose} open={open} />
     </Container>
