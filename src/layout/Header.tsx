@@ -17,12 +17,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Person } from "@mui/icons-material";
 import { useState } from "react";
 import useAuthStore from "@/hooks/useAuth";
+import useCartStore from "@/hooks/useCart";
 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { isAuthenticated, user, logout } = useAuthStore();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const { items } = useCartStore();
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -119,7 +121,7 @@ const Header = () => {
         >
           {(user === null || user.roleName === "USER") && (
             <IconButton color="inherit" href="/gio-hang">
-              <Badge badgeContent={1} color="error">
+              <Badge badgeContent={items.length} color="error">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>

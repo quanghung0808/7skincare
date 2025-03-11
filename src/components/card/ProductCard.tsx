@@ -1,7 +1,9 @@
 import React from "react";
 import { Card, CardMedia, CardContent, Typography, Button, Box } from "@mui/material";
+import useCartStore from "@/hooks/useCart";
 
 interface Product {
+  id: string;
   name: string;
   price: string;
   oldPrice?: string;
@@ -10,6 +12,23 @@ interface Product {
 }
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
+  const { addItem } = useCartStore();
+
+  const parsePrice = (priceString: string): number => {
+    return parseInt(priceString.replace(/[₫,]/g, ""), 10);
+  };
+
+  const handleAddToCart = () => {
+    const cartItem = {
+      id: product.id,
+      name: product.name,
+      price: parsePrice(product.price),
+      quantity: 1,
+    };
+
+    addItem(cartItem);
+  };
+
   return (
     <Card
       sx={{
@@ -44,7 +63,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         )}
       </CardContent>
       <Box sx={{ p: 2 }}>
-        <Button variant="contained" fullWidth>
+        <Button variant="contained" fullWidth onClick={handleAddToCart}>
           ADD TO CART
         </Button>
       </Box>

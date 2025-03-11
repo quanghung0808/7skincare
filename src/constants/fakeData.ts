@@ -65,19 +65,21 @@ export const whyJoinUs = [
     description: "Có thể trực tiếp thăm khám với bác sĩ tại TP.Hồ Chí Minh",
   },
 ];
-
 export const products = [
   {
+    id: "1",
     name: "A Derma Exomega Control Emollient Cream – Kem",
     price: "316,000₫",
     image: "path_to_image1",
   },
   {
+    id: "2",
     name: "Abbott Hydroquinone Cream USP 4%- Kem đặc trị chữa",
     price: "220,000₫",
     image: "path_to_image2",
   },
   {
+    id: "3",
     name: "ACM Cicastim.A Creme Apaisante Soothing Cream –",
     price: "376,000₫",
     oldPrice: "418,000₫",
@@ -85,11 +87,13 @@ export const products = [
     image: "path_to_image3",
   },
   {
+    id: "4",
     name: "ACM Dephiwhite Advanced Intensive Anti-Brown Spot",
     price: "170,000₫",
     image: "path_to_image4",
   },
   {
+    id: "5",
     name: "ACM Depiwhite Advanced Intensive Anti-Brown Spot",
     price: "515,000₫",
     oldPrice: "572,000₫",

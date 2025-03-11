@@ -1,5 +1,6 @@
 import About from "@/pages/About";
 import Blog from "@/pages/Blog";
+import Cart from "@/pages/Cart";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import Products from "@/pages/Products";
@@ -44,6 +45,11 @@ export const publicRoutes: Route[] = [
   {
     path: "/dang-ky",
     component: <Register />,
+    hidden: true,
+  },
+  {
+    path: "/gio-hang",
+    component: <Cart />,
     hidden: true,
   },
 ];
