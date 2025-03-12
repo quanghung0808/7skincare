@@ -1,4 +1,3 @@
-// src/components/brands/BrandsTableWithPagination.tsx
 import React, { useState } from "react";
 import {
   Table,
@@ -12,15 +11,15 @@ import {
   TablePagination,
 } from "@mui/material";
 import { Statuses } from "@/constants/status";
-import { Brand } from "@/types/schema/brand";
+import { Category } from "@/types/schema/category";
 
-interface BrandsTableProps {
-  brands: Brand[];
+interface CategoriesTableProps {
+  categories: Category[];
   page: number;
   setPage: (page: number) => void;
 }
 
-const BrandsTable: React.FC<BrandsTableProps> = ({ brands, page, setPage }) => {
+const CategoriesTable: React.FC<CategoriesTableProps> = ({ categories, page, setPage }) => {
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
 
   const handleChangePage = (event: unknown, newPage: number) => {
@@ -32,7 +31,10 @@ const BrandsTable: React.FC<BrandsTableProps> = ({ brands, page, setPage }) => {
     setPage(0);
   };
 
-  const paginatedBrands = brands.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+  const paginatedCategories = categories.slice(
+    page * rowsPerPage,
+    page * rowsPerPage + rowsPerPage
+  );
 
   return (
     <>
@@ -41,21 +43,23 @@ const BrandsTable: React.FC<BrandsTableProps> = ({ brands, page, setPage }) => {
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
-              <TableCell>Tên thương hiệu</TableCell>
+              <TableCell>Tên danh mục</TableCell>
+              <TableCell>Mô tả</TableCell>
               <TableCell>Ngày tạo</TableCell>
               <TableCell>Trạng thái</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedBrands.map(brand => (
-              <TableRow key={brand.id}>
-                <TableCell>{brand.id}</TableCell>
-                <TableCell>{brand.name}</TableCell>
-                <TableCell>{new Date(brand.createdAt).toLocaleString()}</TableCell>{" "}
+            {paginatedCategories.map(categories => (
+              <TableRow key={categories.id}>
+                <TableCell>{categories.id}</TableCell>
+                <TableCell>{categories.name}</TableCell>
+                <TableCell>{categories.description}</TableCell>
+                <TableCell>{new Date(categories.createdAt).toLocaleString()}</TableCell>{" "}
                 <TableCell>
                   <Chip
-                    label={brand.status === Statuses.ACTIVATED ? "Hoạt động" : "Vô hiệu hóa"}
-                    color={brand.status === Statuses.ACTIVATED ? "success" : "error"}
+                    label={categories.status === Statuses.ACTIVATED ? "Hoạt động" : "Vô hiệu hóa"}
+                    color={categories.status === Statuses.ACTIVATED ? "success" : "error"}
                   />
                 </TableCell>
               </TableRow>
@@ -66,7 +70,7 @@ const BrandsTable: React.FC<BrandsTableProps> = ({ brands, page, setPage }) => {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={brands.length}
+        count={categories.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
@@ -76,4 +80,4 @@ const BrandsTable: React.FC<BrandsTableProps> = ({ brands, page, setPage }) => {
   );
 };
 
-export default BrandsTable;
+export default CategoriesTable;
