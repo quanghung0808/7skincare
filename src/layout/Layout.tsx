@@ -12,7 +12,7 @@ const Layout: React.FC = () => {
 
       {/* Main Content */}
       <Box component="main" sx={{ flexGrow: 1, paddingTop: 2, paddingBottom: 2 }}>
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <Outlet />
         </Container>
       </Box>
