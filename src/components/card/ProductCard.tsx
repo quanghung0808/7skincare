@@ -1,28 +1,17 @@
 import React from "react";
 import { Card, CardMedia, CardContent, Typography, Button, Box } from "@mui/material";
 import useCartStore from "@/hooks/useCart";
-
-interface Product {
-  id: string;
-  name: string;
-  price: string;
-  oldPrice?: string;
-  discount?: string;
-  image: string;
-}
+import { Product } from "@/types/schema/product";
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const { addItem } = useCartStore();
 
-  const parsePrice = (priceString: string): number => {
-    return parseInt(priceString.replace(/[₫,]/g, ""), 10);
-  };
-
   const handleAddToCart = () => {
     const cartItem = {
       id: product.id,
+      image: product.image,
       name: product.name,
-      price: parsePrice(product.price),
+      price: product.price,
       quantity: 1,
     };
 
@@ -39,32 +28,33 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         justifyContent: "space-between",
       }}
     >
-      <CardMedia component="img" height="140" image={product.image} alt={product.name} />
-      <CardContent sx={{ flexGrow: 1 }}>
+      <CardMedia
+        component="img"
+        height="200"
+        image={product.image}
+        alt={product.name}
+        title={product.name}
+        sx={{ padding: "2em 2em 0 2em" }}
+      />
+
+      <CardContent
+        sx={{
+          flexGrow: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
         <Typography gutterBottom variant="body1" component="div">
           {product.name}
         </Typography>
-        {product.oldPrice && (
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ textDecoration: "line-through" }}
-          >
-            {product.oldPrice}
-          </Typography>
-        )}
         <Typography variant="h6" color="text.primary">
-          {product.price}
+          {product.price.toLocaleString()} đ
         </Typography>
-        {product.discount && (
-          <Typography variant="body2" color="error">
-            {product.discount}
-          </Typography>
-        )}
       </CardContent>
-      <Box sx={{ p: 2 }}>
+      <Box sx={{ px: 2, pb: 2 }}>
         <Button variant="contained" fullWidth onClick={handleAddToCart}>
-          ADD TO CART
+          Thêm vào giỏ hàng
         </Button>
       </Box>
     </Card>
