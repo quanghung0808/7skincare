@@ -2,7 +2,13 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { login, registerUser, registerStaff } from "@/apis/auth";
-import { LoginData, RegisterStaffData, RegisterUserData, User } from "@/types/schema/user";
+import {
+  LoginData,
+  RegisterStaffData,
+  RegisterUserData,
+  UpdateAccountData,
+  User,
+} from "@/types/schema/user";
 
 // Define the auth store interface
 interface AuthStore {
@@ -14,6 +20,7 @@ interface AuthStore {
   registerStaff: (data: RegisterStaffData) => Promise<void>;
   logout: () => void;
   checkAuth: () => boolean;
+  updateUser: (updatedData: UpdateAccountData) => void;
 }
 
 export const useAuthStore = create<AuthStore>()(
@@ -86,6 +93,19 @@ export const useAuthStore = create<AuthStore>()(
       checkAuth: () => {
         const { user } = get();
         return !!(user && user.token);
+      },
+      updateUser: (updatedData: UpdateAccountData) => {
+        set(state => ({
+          user: state.user
+            ? {
+                ...state.user,
+                name: updatedData.name,
+                phoneNumber: updatedData.phoneNumber,
+                accountId: updatedData.id,
+                email: updatedData.email,
+              }
+            : null,
+        }));
       },
     }),
     {

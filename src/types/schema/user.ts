@@ -1,3 +1,5 @@
+import { Status } from "@/constants/status";
+
 export interface User {
   token: string;
   roleName: string;
@@ -6,7 +8,7 @@ export interface User {
   createAt: string;
   email: string;
   phoneNumber: string;
-  status: string;
+  status: Status;
 }
 
 export interface LoginData {
@@ -29,4 +31,22 @@ export interface RegisterUserData {
   name: string;
   password: string;
   phoneNumber: string;
+}
+
+export interface UpdateAccountData {
+  address: string;
+  email: string;
+  phoneNumber: string;
+  name: string;
+  id: number;
+}
+
+export interface Account {
+  address: string;
+  email: string;
+  phoneNumber: string;
+  name: string;
+  id: number;
+  createAt: string;
+  status: Status;
 }

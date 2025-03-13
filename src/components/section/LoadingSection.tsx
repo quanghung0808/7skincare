@@ -6,7 +6,7 @@ const LoadingSection: React.FC = () => {
     <Box
       display="flex"
       justifyContent="center"
-      sx={{ marginBottom: "10px", alignItems: "center", height: "50vh" }}
+      sx={{ marginBottom: "10px", alignItems: "center", height: "50vh", width: "100%" }}
     >
       <CircularProgress />
     </Box>

@@ -134,7 +134,10 @@ const Header = () => {
                 {user?.name}
               </Button>
               <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                <MenuItem onClick={() => navigate("/thong-tin-ca-nhan")}>
+                  Thông tin cá nhân
+                </MenuItem>
+                <MenuItem onClick={handleLogout}>Đăng xuất</MenuItem>
               </Menu>
             </>
           ) : (
