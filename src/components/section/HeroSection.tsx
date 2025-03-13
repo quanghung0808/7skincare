@@ -1,6 +1,8 @@
 import { Container, Typography, Button, Grid, Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <Container maxWidth="lg" style={{ padding: "2rem" }}>
       <Grid container spacing={4} alignItems="center">
@@ -16,7 +18,12 @@ const HeroSection = () => {
             bác sĩ da liễu Anh Trung!
           </Typography>
           <Box mt={2} sx={{ display: "flex", gap: "1rem", justifyContent: "space-between" }}>
-            <Button variant="contained" color="primary" fullWidth>
+            <Button
+              variant="contained"
+              color="primary"
+              fullWidth
+              onClick={() => navigate("/phan-tich-da")}
+            >
               PHÂN TÍCH DA
             </Button>
             <Button

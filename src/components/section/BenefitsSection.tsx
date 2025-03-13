@@ -1,8 +1,10 @@
 import React from "react";
 import { Box, Typography, Button, Grid, Card, CardMedia, CardContent } from "@mui/material";
 import { benefits } from "@/constants/fakeData";
+import { useNavigate } from "react-router-dom";
 
 const BenefitsSection: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <Box sx={{ padding: "2rem", backgroundColor: "#f0f4f8" }}>
       <Typography variant="h4" sx={{ textAlign: "center", marginBottom: "2rem" }}>
@@ -26,7 +28,7 @@ const BenefitsSection: React.FC = () => {
         ))}
       </Grid>
       <Box sx={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" onClick={() => navigate("/dang-nhap")}>
           Tham gia ngay
         </Button>
       </Box>

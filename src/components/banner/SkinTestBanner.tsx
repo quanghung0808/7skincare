@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { styled } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 
 const BannerContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -19,6 +20,7 @@ const BannerImage = styled("img")(({ theme }) => ({
 }));
 
 const SkinTestBanner: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <BannerContainer>
       <Typography variant="h4" sx={{ fontWeight: "bold", marginBottom: 2 }}>
@@ -34,7 +36,12 @@ const SkinTestBanner: React.FC = () => {
       <Typography variant="body1" sx={{ marginBottom: 4 }}>
         Hãy bắt đầu cuộc hành trình da khỏe da đẹp với chúng tôi ngay từ hôm nay.
       </Typography>
-      <Button variant="contained" color="primary" sx={{ marginBottom: 4 }}>
+      <Button
+        variant="contained"
+        color="primary"
+        sx={{ marginBottom: 4 }}
+        onClick={() => navigate("/phan-tich-da")}
+      >
         TRẮC NGHIỆM PHÂN TÍCH DA
       </Button>
       <BannerImage src={"/skintest.png"} alt="Banner" />

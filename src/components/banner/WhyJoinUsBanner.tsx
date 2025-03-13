@@ -1,6 +1,7 @@
 import { whyJoinUs } from "@/constants/fakeData";
 import { Box, Typography, Grid, Card, CardContent, Button } from "@mui/material";
 import { styled } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 
 const WhyJoinUsCard = styled(Card)(({ theme }) => ({
   textAlign: "center",
@@ -11,6 +12,7 @@ const WhyJoinUsCard = styled(Card)(({ theme }) => ({
 }));
 
 const WhyJoinUsBanner = () => {
+  const navigate = useNavigate();
   return (
     <Box sx={{ textAlign: "center", padding: 4 }}>
       <Typography variant="h4" sx={{ marginBottom: 4 }}>
@@ -35,7 +37,12 @@ const WhyJoinUsBanner = () => {
           </Grid>
         ))}
       </Grid>
-      <Button variant="contained" color="primary" sx={{ marginTop: 4 }}>
+      <Button
+        variant="contained"
+        color="primary"
+        sx={{ marginTop: 4 }}
+        onClick={() => navigate("/phan-tich-da")}
+      >
         THỰC HIỆN TRẮC NGHIỆM NGAY
       </Button>
     </Box>

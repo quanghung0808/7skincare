@@ -21,8 +21,8 @@ export const publicRoutes: Route[] = [
     hidden: false,
   },
   {
-    path: "/khao-sat-da",
-    name: "Khảo sát da",
+    path: "/phan-tich-da",
+    name: "Phân tích da",
     hidden: false,
   },
   {
