@@ -1,17 +1,12 @@
+import { CartProduct } from "@/types/schema/cart";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
-interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-}
 interface CartStore {
-  items: CartItem[];
-  addItem: (item: CartItem) => void;
-  removeItem: (id: string) => void;
-  updateItem: (id: string, updatedItem: Partial<CartItem>) => void;
+  items: CartProduct[];
+  addItem: (item: CartProduct) => void;
+  removeItem: (id: number) => void;
+  updateItem: (id: number, updatedItem: Partial<CartProduct>) => void;
   clearCart: () => void;
 }
 

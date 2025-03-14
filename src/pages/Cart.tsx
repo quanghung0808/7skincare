@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, TextField, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import useCartStore from "@/hooks/useCart";
 import EmptyCart from "@/components/empty/EmptyCart";
 import CartItem from "@/components/card/CartItem";
@@ -21,17 +21,14 @@ const Cart = () => {
               <CartItem
                 key={item.id}
                 item={item}
-                onQuantityChange={(id, quantity) => updateItem(id, { quantity })}
+                onQuantityChange={(id, quantity) => {
+                  const newQuantity = Math.max(1, parseInt(quantity.toString(), 10));
+                  updateItem(id, { quantity: newQuantity });
+                }}
                 onRemove={removeItem}
               />
             ))}
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <Box sx={{ display: "flex", flexDirection: "row", mt: 2, gap: 2 }}>
-                <TextField label="Mã giảm giá" variant="outlined" />
-                <Button variant="contained" color="primary">
-                  Áp dụng mã
-                </Button>
-              </Box>
+            <Box sx={{ display: "flex", justifyContent: "end" }}>
               <Box sx={{ mt: 2 }}>
                 <Button variant="outlined" color="warning" onClick={clearCart}>
                   Xóa giỏ hàng

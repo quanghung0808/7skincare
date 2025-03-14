@@ -12,13 +12,20 @@ const Products = () => {
   });
   const [page, setPage] = useState(1);
   const itemsPerPage = 12;
-  const totalPages = Math.ceil((data?.length || 0) / itemsPerPage);
+
+  const sortedProducts = (data ?? []).sort((a, b) => {
+    if (a.quantity > 0 && b.quantity === 0) return -1;
+    if (a.quantity === 0 && b.quantity > 0) return 1;
+    return 0;
+  });
+
+  const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
 
   const handleChange = (event: unknown, value: number) => {
     setPage(value);
   };
 
-  const displayedProducts = (data ?? []).slice((page - 1) * itemsPerPage, page * itemsPerPage);
+  const displayedProducts = sortedProducts.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
   return (
     <Container>
