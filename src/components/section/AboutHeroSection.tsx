@@ -5,7 +5,7 @@ const AboutHeroSection = () => {
     <Container>
       <Container sx={{ textAlign: "center", mt: 4 }}>
         <Typography variant="h4" sx={{ fontWeight: "bold", mb: 4 }}>
-          Giới thiệu về Lovelyskin
+          Giới thiệu về 7skincare
         </Typography>
 
         <Box
@@ -29,7 +29,7 @@ const AboutHeroSection = () => {
 
           <Box sx={{ textAlign: "left", maxWidth: "500px" }}>
             <Typography variant="h4" sx={{ fontWeight: "bold", color: "#212A6B", mb: 2 }}>
-              7skincre
+              7skincare
             </Typography>
             <Typography variant="body1">
               Là một dự án của <b>Hi Beauty</b> cùng đội ngũ các bác sĩ Da liễu, sự lựa chọn hàng

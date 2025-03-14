@@ -1,14 +1,4 @@
-import {
-  AppBar,
-  Badge,
-  Box,
-  Button,
-  IconButton,
-  Toolbar,
-  Typography,
-  Menu,
-  MenuItem,
-} from "@mui/material";
+import { AppBar, Badge, Box, Button, IconButton, Toolbar, Menu, MenuItem } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { publicRoutes } from "@/routes/config/publicRoutes";
 import { staffRoutes } from "@/routes/config/staffRoutes";
@@ -67,18 +57,9 @@ const Header = () => {
           justifyContent: "space-between",
         }}
       >
-        <Typography
-          variant="h6"
-          className="logo"
-          sx={{
-            fontWeight: "bold",
-            marginRight: "20px",
-            fontFamily: '"Pacifico", cursive',
-            color: "var(--primary-color)",
-          }}
-        >
-          7skincare
-        </Typography>
+        <Box>
+          <img src="/logo.png" width={90} height={90} />
+        </Box>
 
         <Box
           className="nav"

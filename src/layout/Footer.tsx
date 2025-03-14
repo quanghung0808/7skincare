@@ -19,26 +19,10 @@ const Footer: React.FC = () => {
             <Box display="flex" justifyContent="space-between" flexWrap="wrap" gap={5}>
               {/* Left Section - Logo and Contact Info */}
               <Box sx={{ flex: 1, minWidth: 200, marginBottom: 2 }}>
-                <Typography
-                  variant="h1"
-                  sx={{
-                    fontFamily: '"Pacifico", cursive',
-                    fontSize: "2rem",
-                    color: "var(--primary-color)",
-                    marginBottom: 2,
-                  }}
-                >
-                  7skincare
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    marginBottom: 1,
-                    color: "text.secondary",
-                  }}
-                >
-                  ✉ 220/27 Nguyễn Trọng Tuyển, Phường 8, Quận Phú Nhuận, TP. Hồ Chí Minh
-                </Typography>
+                <Box>
+                  <img src="/logo.png" width={85} height={"auto"} />
+                </Box>
+
                 <Typography
                   variant="body2"
                   sx={{
