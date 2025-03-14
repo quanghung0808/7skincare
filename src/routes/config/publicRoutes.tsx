@@ -3,6 +3,7 @@ import Blog from "@/pages/Blog";
 import Cart from "@/pages/Cart";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
+import OrderTracking from "@/pages/OrderTracking";
 import Products from "@/pages/Products";
 import Register from "@/pages/Register";
 import { Route } from "@/types/common";
@@ -50,6 +51,11 @@ export const publicRoutes: Route[] = [
   {
     path: "/gio-hang",
     component: <Cart />,
+    hidden: true,
+  },
+  {
+    path: "/theo-doi-don-hang",
+    component: <OrderTracking />,
     hidden: true,
   },
 ];

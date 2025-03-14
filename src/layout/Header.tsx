@@ -14,7 +14,7 @@ import { publicRoutes } from "@/routes/config/publicRoutes";
 import { staffRoutes } from "@/routes/config/staffRoutes";
 import { adminRoutes } from "@/routes/config/adminRoutes";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Person } from "@mui/icons-material";
+import { Person, ShoppingBag } from "@mui/icons-material";
 import { useState } from "react";
 import useAuthStore from "@/hooks/useAuth";
 import useCartStore from "@/hooks/useCart";
@@ -135,9 +135,20 @@ const Header = () => {
               </Button>
               <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
                 <MenuItem onClick={() => navigate("/thong-tin-ca-nhan")}>
+                  <Person sx={{ marginRight: "10px" }} />
                   Thông tin cá nhân
                 </MenuItem>
-                <MenuItem onClick={handleLogout}>Đăng xuất</MenuItem>
+                {(user === null || user.roleName === "USER") && (
+                  <MenuItem onClick={() => navigate("/theo-doi-don-hang")}>
+                    <ShoppingBag sx={{ marginRight: "10px" }} />
+                    Đơn hàng
+                  </MenuItem>
+                )}
+
+                <MenuItem onClick={handleLogout}>
+                  <Person sx={{ marginRight: "10px" }} />
+                  Đăng xuất
+                </MenuItem>
               </Menu>
             </>
           ) : (
