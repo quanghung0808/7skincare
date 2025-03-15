@@ -1,6 +1,7 @@
 import ManageBrands from "@/pages/ManageBrands";
 import ManageCategories from "@/pages/ManageCategories";
 import ManageProducts from "@/pages/ManageProducts";
+import ManageQuestions from "@/pages/ManageQuestions";
 import { Route } from "@/types/common";
 
 export const staffRoutes: Route[] = [
@@ -20,6 +21,12 @@ export const staffRoutes: Route[] = [
     path: "/quan-ly-thuong-hieu",
     component: <ManageBrands />,
     name: "Thương hiệu",
+    hidden: false,
+  },
+  {
+    path: "/quan-ly-cau-hoi",
+    component: <ManageQuestions />,
+    name: "Câu hỏi",
     hidden: false,
   },
 ];
