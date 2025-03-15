@@ -49,7 +49,7 @@ const PositionsTable: React.FC<PositionsTableProps> = ({ positions, page, setPag
               <TableRow key={position.id}>
                 <TableCell>{position.id}</TableCell>
                 <TableCell>{position.name}</TableCell>
-                <TableCell>{new Date(position.createdAt).toLocaleString()}</TableCell>
+                <TableCell>{new Date(position.createdAt).toLocaleString("vi-VN")}</TableCell>
                 <TableCell>
                   <Chip
                     label={position.status === Statuses.ACTIVATED ? "Hoạt động" : "Vô hiệu hóa"}
