@@ -8,7 +8,6 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
-  Paper,
   Select,
   Stack,
 } from "@mui/material";
@@ -49,7 +48,7 @@ const FilterSection = ({
   clearFilters,
 }: FilterSectionProps) => {
   return (
-    <Paper elevation={3} sx={{ mb: 4, p: 1, borderRadius: 1 }}>
+    <>
       {isLoadingBrands || isLoadingCategories ? (
         <Box display="flex" justifyContent="center" sx={{ alignItems: "center", height: "100%" }}>
           <CircularProgress />
@@ -110,7 +109,7 @@ const FilterSection = ({
           Xóa
         </Button>
       </Box>
-    </Paper>
+    </>
   );
 };
 

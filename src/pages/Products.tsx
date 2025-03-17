@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Container, Grid, Pagination } from "@mui/material";
+import { Box, Container, Grid, Pagination, Paper, TextField } from "@mui/material";
 import ProductCard from "@/components/card/ProductCard";
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "@/apis/product";
@@ -24,6 +24,7 @@ const Products = () => {
   });
 
   const [page, setPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
   const itemsPerPage = 12;
 
   // Filter states
@@ -33,10 +34,9 @@ const Products = () => {
   const [appliedFilters, setAppliedFilters] = useState({
     brand: "",
     category: "",
-    priceRange: "", // Will store selected range key
+    priceRange: "",
   });
 
-  // Price range options
   const priceRanges = [
     { label: "Tất cả", value: "", range: [0, Infinity] },
     { label: "0 - 200,000", value: "0-200000", range: [0, 200000] },
@@ -45,7 +45,6 @@ const Products = () => {
     { label: "> 500,000", value: "500000+", range: [500000, Infinity] },
   ];
 
-  // Apply sorting and filtering
   const filteredProducts = (data ?? [])
     .filter(product => {
       const selectedRange = priceRanges.find(range => range.value === appliedFilters.priceRange);
@@ -55,7 +54,8 @@ const Products = () => {
         (!appliedFilters.brand || product.brand.name === appliedFilters.brand) &&
         (!appliedFilters.category || product.category.name === appliedFilters.category) &&
         product.price >= minPrice &&
-        product.price <= maxPrice
+        product.price <= maxPrice &&
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) // Search by name
       );
     })
     .sort((a, b) => {
@@ -84,6 +84,7 @@ const Products = () => {
     setBrandFilter("");
     setCategoryFilter("");
     setPriceRangeFilter("");
+    setSearchQuery("");
     setAppliedFilters({
       brand: "",
       category: "",
@@ -95,22 +96,38 @@ const Products = () => {
   return (
     <Container>
       <Box sx={{ flexGrow: 1, mt: 4 }}>
-        {/* Filter Section */}
-        <FilterSection
-          isLoadingBrands={isLoadingBrands}
-          isLoadingCategories={isLoadingCategories}
-          brands={brands}
-          categories={categories}
-          brandFilter={brandFilter}
-          setBrandFilter={setBrandFilter}
-          categoryFilter={categoryFilter}
-          setCategoryFilter={setCategoryFilter}
-          priceRangeFilter={priceRangeFilter}
-          setPriceRangeFilter={setPriceRangeFilter}
-          priceRanges={priceRanges}
-          applyFilters={applyFilters}
-          clearFilters={clearFilters}
-        />
+        {/* Search Bar */}
+        <Paper elevation={3} sx={{ mb: 4, p: 1, borderRadius: 1, display: "flex", gap: 2 }}>
+          <Box flex={1}>
+            <TextField
+              size="small"
+              label="Tìm kiếm sản phẩm"
+              variant="outlined"
+              fullWidth
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+            />
+          </Box>
+          {/* Filter Section */}
+          <Box flex={1.5}>
+            <FilterSection
+              isLoadingBrands={isLoadingBrands}
+              isLoadingCategories={isLoadingCategories}
+              brands={brands}
+              categories={categories}
+              brandFilter={brandFilter}
+              setBrandFilter={setBrandFilter}
+              categoryFilter={categoryFilter}
+              setCategoryFilter={setCategoryFilter}
+              priceRangeFilter={priceRangeFilter}
+              setPriceRangeFilter={setPriceRangeFilter}
+              priceRanges={priceRanges}
+              applyFilters={applyFilters}
+              clearFilters={clearFilters}
+            />
+          </Box>
+        </Paper>
+
         {/* Products Grid */}
         <Grid container spacing={4}>
           {isLoading ? (
