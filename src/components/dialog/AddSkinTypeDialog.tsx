@@ -32,7 +32,7 @@ const AddSkinTypeDialog: React.FC<AddSkinTypeDialogProps> = ({ open, handleClose
 
   return (
     <Dialog open={open} onClose={handleClose} sx={{ minWidth: "400px" }}>
-      <DialogTitle>Thêm thương hiệu mới</DialogTitle>
+      <DialogTitle>Thêm loại da mới</DialogTitle>
       <DialogContent>
         <TextField
           label="Tên loại da"

@@ -32,10 +32,10 @@ const AddPositionDialog: React.FC<AddPositionDialogProps> = ({ open, handleClose
 
   return (
     <Dialog open={open} onClose={handleClose} sx={{ minWidth: "400px" }}>
-      <DialogTitle>Thêm thương hiệu mới</DialogTitle>
+      <DialogTitle>Thêm vị trí mới</DialogTitle>
       <DialogContent>
         <TextField
-          label="Tên thương hiệu"
+          label="Tên vị trí"
           value={newPosition}
           onChange={e => setNewPosition(e.target.value)}
           fullWidth

@@ -8,6 +8,7 @@ import { Person, ShoppingBag } from "@mui/icons-material";
 import { useState } from "react";
 import useAuthStore from "@/hooks/useAuth";
 import useCartStore from "@/hooks/useCart";
+import { Roles } from "@/constants/status";
 
 const Header = () => {
   const location = useLocation();
@@ -31,13 +32,13 @@ const Header = () => {
   };
 
   const getRoutes = () => {
-    if (user?.roleName === "USER") {
+    if (user?.roleName === Roles.USER) {
       return publicRoutes;
     }
-    if (user?.roleName === "STAFF") {
+    if (user?.roleName === Roles.STAFF) {
       return staffRoutes;
     }
-    if (user?.roleName === "ADMIN") {
+    if (user?.roleName === Roles.ADMIN) {
       return adminRoutes;
     }
     return publicRoutes;
@@ -100,7 +101,7 @@ const Header = () => {
             gap: "10px",
           }}
         >
-          {(user === null || user.roleName === "USER") && (
+          {(user === null || user.roleName === Roles.USER) && (
             <IconButton color="inherit" href="/gio-hang">
               <Badge badgeContent={items.length} color="error">
                 <ShoppingCartIcon />
@@ -119,7 +120,7 @@ const Header = () => {
                   <Person sx={{ marginRight: "10px" }} />
                   Thông tin cá nhân
                 </MenuItem>
-                {(user === null || user.roleName === "USER") && (
+                {(user === null || user.roleName === Roles.USER) && (
                   <MenuItem onClick={() => navigate("/theo-doi-don-hang")}>
                     <ShoppingBag sx={{ marginRight: "10px" }} />
                     Đơn hàng
