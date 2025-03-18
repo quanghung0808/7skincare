@@ -9,5 +9,12 @@ export const Roles = {
   ADMIN: "ADMIN",
 } as const;
 
+export const OrderStatuses = {
+  PENDING: "PENDING",
+  COMPLETED: "COMPLETED",
+  FAILED: "FAILED",
+} as const;
+
+export type OrderStatus = (typeof OrderStatuses)[keyof typeof OrderStatuses];
 export type Status = (typeof Statuses)[keyof typeof Statuses];
 export type Role = (typeof Roles)[keyof typeof Roles];
