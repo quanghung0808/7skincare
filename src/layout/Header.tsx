@@ -52,11 +52,12 @@ const Header = () => {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+    setDrawerOpen(false);
   };
 
   const handleLogout = () => {
-    logout();
     handleMenuClose();
+    logout();
     navigate("/dang-nhap");
   };
 
@@ -228,7 +229,12 @@ const Header = () => {
           ) : (
             <List>
               <ListItem disablePadding>
-                <ListItemButton onClick={() => navigate("/dang-nhap")}>
+                <ListItemButton
+                  onClick={() => {
+                    setDrawerOpen(false);
+                    navigate("/dang-nhap");
+                  }}
+                >
                   <ListItemIcon>
                     <Person />
                   </ListItemIcon>
