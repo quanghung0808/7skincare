@@ -62,6 +62,7 @@ const OrderTracking: React.FC = () => {
           <Tab label="Chờ thanh toán" value={OrderStatuses.APPROVED} />
           <Tab label="Đã thanh toán" value={OrderStatuses.SUCCESS} />
           <Tab label="Giao hàng thành công" value={OrderStatuses.DONE} />
+          <Tab label="Bị từ chối" value={OrderStatuses.REJECTED} />
           <Tab label="Thất bại" value={OrderStatuses.CANCELED} />
         </Tabs>
         {isLoading ? (

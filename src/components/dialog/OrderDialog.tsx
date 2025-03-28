@@ -65,7 +65,9 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ open, onClose, order }) => {
                         ? "Đã thanh toán"
                         : order.status === OrderStatuses.DONE
                           ? "Giao hàng thành công"
-                          : "Thất bại"
+                          : order.status === OrderStatuses.REJECTED
+                            ? "Bị từ chối"
+                            : "Thất bại"
                 }
                 color={
                   order.status === OrderStatuses.PENDING

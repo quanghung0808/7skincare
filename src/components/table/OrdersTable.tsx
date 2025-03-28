@@ -152,6 +152,7 @@ const OrdersTable: React.FC<OrdersTableProps> = ({ orders, page, setPage }) => {
           <Tab label="Chờ thanh toán" value={OrderStatuses.APPROVED} />
           <Tab label="Đã thanh toán" value={OrderStatuses.SUCCESS} />
           <Tab label="Giao hàng thành công" value={OrderStatuses.DONE} />
+          <Tab label="Bị từ chối" value={OrderStatuses.REJECTED} />
           <Tab label="Thất bại" value={OrderStatuses.CANCELED} />
         </Tabs>
       </Box>
@@ -190,7 +191,9 @@ const OrdersTable: React.FC<OrdersTableProps> = ({ orders, page, setPage }) => {
                             ? "Đã thanh toán"
                             : order.status === OrderStatuses.DONE
                               ? "Giao hàng thành công"
-                              : "Thất bại"
+                              : order.status === OrderStatuses.REJECTED
+                                ? "Bị từ chối"
+                                : "Thất bại"
                     }
                     color={
                       order.status === OrderStatuses.PENDING
