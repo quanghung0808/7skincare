@@ -26,7 +26,6 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ open, onClose, order }) => {
   const theme = useTheme();
   const { user } = useAuthStore();
   if (!order) return null;
-  console.log(order);
   return (
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
       <DialogTitle sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -47,9 +46,12 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ open, onClose, order }) => {
               <strong>Số điện thoại:</strong> {order.phoneNumber}
             </Typography>
             <Typography>
-              <strong>Tổng giá:</strong> {order.totalPrice.toLocaleString()} VND
+              <strong>Phí vận chuyển:</strong> 25,000 VNĐ
             </Typography>
             <Typography>
+              <strong>Tổng giá:</strong> {order.totalPrice.toLocaleString()} VNĐ
+            </Typography>
+            <Box>
               <strong>Trạng thái:</strong>
               <Chip
                 sx={{ ml: 1 }}
@@ -57,19 +59,27 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ open, onClose, order }) => {
                 label={
                   order.status === OrderStatuses.PENDING
                     ? "Đang xử lí"
-                    : order.status === OrderStatuses.SUCCESS
-                      ? "Hoàn Thành"
-                      : "Thất bại"
+                    : order.status === OrderStatuses.APPROVED
+                      ? "Chờ thanh toán"
+                      : order.status === OrderStatuses.SUCCESS
+                        ? "Đã thanh toán"
+                        : order.status === OrderStatuses.DONE
+                          ? "Giao hàng thành công"
+                          : "Thất bại"
                 }
                 color={
                   order.status === OrderStatuses.PENDING
                     ? "warning"
-                    : order.status === OrderStatuses.SUCCESS
-                      ? "success"
-                      : "error"
+                    : order.status === OrderStatuses.APPROVED
+                      ? "primary"
+                      : order.status === OrderStatuses.SUCCESS
+                        ? "secondary"
+                        : order.status === OrderStatuses.DONE
+                          ? "success"
+                          : "error"
                 }
               />
-            </Typography>
+            </Box>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="h6" sx={{ fontWeight: 600 }}>
