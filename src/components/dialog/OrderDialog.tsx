@@ -15,6 +15,9 @@ import {
 import { Order } from "@/types/schema/order";
 import useAuthStore from "@/hooks/useAuth";
 import { OrderStatuses } from "@/constants/status";
+import { useQuery } from "@tanstack/react-query";
+import { getStatusHistory } from "@/apis/order";
+import OrderStatusHistorySteps from "../step/OrderStatusHistorySteps";
 
 interface OrderDialogProps {
   open: boolean;
@@ -25,7 +28,16 @@ interface OrderDialogProps {
 const OrderDialog: React.FC<OrderDialogProps> = ({ open, onClose, order }) => {
   const theme = useTheme();
   const { user } = useAuthStore();
+
+  const { data: steps, isLoading: isLoadingSteps } = useQuery({
+    queryKey: ["get-steps-by-order-id"],
+    queryFn: () => getStatusHistory(order?.id ?? 0),
+    enabled: !!order,
+  });
+  console.log(steps);
+
   if (!order) return null;
+
   return (
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
       <DialogTitle sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -35,6 +47,7 @@ const OrderDialog: React.FC<OrderDialogProps> = ({ open, onClose, order }) => {
       </DialogTitle>
       <DialogContent dividers>
         <Grid container spacing={2}>
+          {!isLoadingSteps && steps.length > 0 && <OrderStatusHistorySteps steps={steps} />}
           <Grid item xs={12}>
             <Typography>
               <strong>Người nhận:</strong> {user?.name}

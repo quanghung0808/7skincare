@@ -39,6 +39,10 @@ const doneOrder = async (id: number) => {
   const response = await apiClient.put(BASE_PATH + `/done/?id=${id}`);
   return response.data;
 };
+const getStatusHistory = async (id: number) => {
+  const response = await apiClient.get(`bill-history/?billId=${id}`);
+  return response.data.data;
+};
 export {
   createOrder,
   getOrdersByAccountId,
@@ -48,4 +52,5 @@ export {
   approveOrder,
   rejectOrder,
   doneOrder,
+  getStatusHistory,
 };
